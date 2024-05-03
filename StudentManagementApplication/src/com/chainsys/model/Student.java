@@ -5,6 +5,7 @@ public class Student {
     private String clgName;
     private String city;
     private double percentage;
+    
 
     public Student(){
 

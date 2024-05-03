@@ -10,6 +10,7 @@ public class Client {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         
+        
         StudentDaoInterface dao=new StudentDao();
         System.out.println("Welcome to Student Management application");
         while(true){

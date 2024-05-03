@@ -12,6 +12,7 @@ import com.chainsys.model.Student;
 public class StudentDao implements StudentDaoInterface{
 
     @Override
+    
     public boolean insertStudent(Student s) {
         boolean flag=false;
         try{

@@ -1,10 +1,11 @@
-package com.test;
+package com.chainsys.test;
 import java.util.Scanner;
+
 import com.chainsys.DAO.StudentDao;
 import com.chainsys.DAO.StudentDaoInterface;
 import com.chainsys.DAO.StudentManagementValidation;
-import com.model.Student;
-
+import com.chainsys.model.Student;
+ 
 public class Client {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);

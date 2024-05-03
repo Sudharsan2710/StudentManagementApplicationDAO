@@ -1,4 +1,4 @@
-package com.model;
+package com.chainsys.model;
 public class Student {
     private int rollNum;
     private String name;

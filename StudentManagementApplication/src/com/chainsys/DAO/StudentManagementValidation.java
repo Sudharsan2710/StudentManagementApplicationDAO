@@ -58,7 +58,7 @@ public class StudentManagementValidation {
 					
 					}
 					else {
-						System.out.print("Enter the correct ID from 3000 to 4000");
+						System.out.print("Enter the correct Roll Number from 3000 to 4000");
 						id = sc.nextInt();
 						}
 				}

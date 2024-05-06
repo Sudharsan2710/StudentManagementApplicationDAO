@@ -2,28 +2,28 @@ package com.chainsys.model;
 public class Student {
     private int rollNum;
     private String name;
-    private String clgName;
-    private String city;
+    private String collegeName;
+    private String department;
     private double percentage;
     
 
     public Student(){
 
     }
-    public Student( String name, String clgName, String city, double percentage) {
+    public Student( String name, String collegeName, String department, double percentage) {
         
         this.name = name;
-        this.clgName = clgName;
-        this.city = city;
+        this.collegeName = collegeName;
+        this.department = department;
         this.percentage = percentage;
     }
     
 
-    public Student(int rollNum, String name, String clgName, String city, double percentage) {
+    public Student(int rollNum, String name, String collegeName, String department, double percentage) {
         this.rollNum = rollNum;
         this.name = name;
-        this.clgName = clgName;
-        this.city = city;
+        this.collegeName = collegeName;
+        this.department = department;
         this.percentage = percentage;
     }
 
@@ -43,20 +43,20 @@ public class Student {
         this.name = name;
     }
 
-    public String getClgName() {
-        return clgName;
+    public String getcollegeName() {
+        return collegeName;
     }
 
-    public void setClgName(String clgName) {
-        this.clgName = clgName;
+    public void setcollegeName(String collegeName) {
+        this.collegeName = collegeName;
     }
 
-    public String getCity() {
-        return city;
+    public String getdepartment() {
+        return department;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setdepartment(String department) {
+        this.department = department;
     }
 
     public double getPercentage() {
@@ -72,8 +72,8 @@ public class Student {
         return "Student{" +
                 "rollNum=" + rollNum +
                 ", name='" + name + '\'' +
-                ", clgName='" + clgName + '\'' +
-                ", city='" + city + '\'' +
+                ", collegeName='" + collegeName + '\'' +
+                ", department='" + department + '\'' +
                 ", percentage=" + percentage +
                 '}';
     }

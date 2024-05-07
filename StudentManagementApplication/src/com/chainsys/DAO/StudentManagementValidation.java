@@ -5,7 +5,7 @@ public class StudentManagementValidation {
 	static	 Scanner sc = new Scanner(System.in);
 
 		public static String checkusername(String Username) {
-			
+			 
 			try {
 			while (true) {
 			

@@ -21,6 +21,7 @@ public class Client {
 		
 		System.out.println(
 				"-----------------------> LOGIN PAGE <------------------------------------------------");
+		
 		int choice1;
 		System.out.println("1.ADMIN");
 		System.out.println("2.SIGN IN");

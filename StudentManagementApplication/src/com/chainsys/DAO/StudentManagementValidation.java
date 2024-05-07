@@ -5,12 +5,13 @@ public class StudentManagementValidation {
 	static	 Scanner sc = new Scanner(System.in);
 
 		public static String checkusername(String Username) {
+			
 			try {
 			while (true) {
 			
 				String userName = Username;
 
-				if (userName.matches("[a-zA-Z]+")) {
+				 if (userName.matches("[a-zA-Z]+")) {
 					break;
 				} else 
 				{

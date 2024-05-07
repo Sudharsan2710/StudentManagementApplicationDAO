@@ -12,7 +12,7 @@ public class Client {
 		Scanner sc = new Scanner(System.in);
 
 		StudentDaoInterface dao = new StudentDao();
-		System.out.println("\t\tWelcome to Student Management application\t\t");
+		System.out.println("\t\t Welcome to Student Management application\t\t");
 		int rollNum;
 		String name;
 		String department;
@@ -29,9 +29,9 @@ public class Client {
 		while(true) {
 			
 			ArrayList<String> alist = new ArrayList<>();
-			alist.add("sudharsan27");
-			alist.add("rajaguru13");
-			alist.add("vasanth21");
+			alist.add("Sudharsan27");
+			alist.add("Rajaguru13");
+			alist.add("Vasanth21");
 			int i;
 			String[] nms = new String[alist.size()];
 			for ( i = 0 ; i< alist.size();i++) {
@@ -68,9 +68,11 @@ public class Client {
 				
 				System.out.println("Enter the New Username: ");
 				String username1=sc.next();
+				StudentManagementValidation.validusername1(username1);
 				
 				System.out.println("Enter the password: ");
 				String password=sc.next();
+				StudentManagementValidation.checkpassword(password);
 				
 				while (username1.matches(password)) {
 					System.out.println("password should not be same as username");
@@ -95,13 +97,10 @@ public class Client {
 						}
 						
 				}while(true);
-				
-				
-		
-				 
+						 
 			}
 					
-				}
+		}
 		
 
 	    

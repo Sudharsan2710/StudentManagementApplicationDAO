@@ -1,9 +1,12 @@
 package com.chainsys.DAO;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.chainsys.Util.DBConnection;
 import com.chainsys.model.Student;
@@ -146,4 +149,103 @@ public   class StudentDao implements StudentDaoInterface {
 
 		return flag;
 	}
+
+	public boolean  adminDetails() {
+		boolean flag=false;
+		
+			Scanner sc = new Scanner(System.in);
+		
+		     Connection con = DBConnection.createConnection();
+
+		     
+		     while(true) {
+		    	 
+		    	 try {
+		         ArrayList<String> alist = new ArrayList<>();
+		         alist.add("Sudharsan27");
+		         alist.add("Rajaguru13");
+		         alist.add("Vasanth21");
+
+		         String[] nms = new String[alist.size()];
+		         for (int i = 0; i < alist.size(); i++) {
+		             nms[i] = alist.get(i);
+		         }
+		         System.out.println("1. Existing Admin");
+	             System.out.println("2. New Admin");
+		         for (String k: nms) {
+		            
+		             int choice1 = sc.nextInt();
+
+		             if (choice1 == 1) {
+		                 System.out.println("Enter the Username: ");
+		                 String username = sc.next();
+		                 while(true) {
+		                     if (!username.contains(k)) {
+		                         System.out.println("Enter the correct Username:");
+		                         username = sc.next();
+		                    
+		                     } 
+		                 System.out.println("Enter the password");
+		                 String password1 = sc.next();
+
+		                 
+		                 String query = "insert into admindetails(username,password ) values(?,?)";
+		                 PreparedStatement pst = con.prepareStatement(query);
+		                 pst.setString(1, username);
+		                 pst.setString(2, password1);
+		                 int row = pst.executeUpdate();
+		                 System.out.println("Rows affected: " + row);
+		             } 
+		             }else if (choice1 == 2) {
+		                 System.out.println("WELCOME TO SIGN IN PAGE");
+
+		                 System.out.println("Enter the New Username: ");
+		                 String username1 = sc.next();
+
+		                 System.out.println("Enter the password: ");
+		                 String password1 = sc.next();
+
+		                 while (password1.matches(username1)) {
+		                     System.out.println("Password should not be same as username");
+		                     password1 = sc.next();
+		                 }
+
+		                 System.out.println("Enter the confirm Password: ");
+		                 String confirmPassword = sc.next();
+
+		                 do {
+		                     if (password1.equals(confirmPassword)) {
+		                         System.out.println("LOGIN SUCCESSFULL");
+		                         
+		                         String query = "insert into admindetails(username,password ) values(?,?)";
+		                         PreparedStatement pst = con.prepareStatement(query);
+		                         pst.setString(1, username1);
+		                         pst.setString(2, password1);
+		                         int row = pst.executeUpdate();
+		                         System.out.println("Rows affected: " + row);
+		                         break;
+		                     } else {
+		                         System.out.println("PASSWORD MISMATCH PLEASE RE ENTER: ");
+		                         confirmPassword = sc.next();
+		                     }
+		                 } while (true);
+		             }
+		         }
+		         	con.close();
+					return false;
+		        
+		        
+		     
+		     } catch(Exception e){
+		    	 e.printStackTrace();
+		    	 
+		     }
+		     
+	}
+		     
+		     
+	}
+				
 }
+
+

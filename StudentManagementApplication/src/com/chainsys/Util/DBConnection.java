@@ -16,7 +16,7 @@ public class DBConnection {
             String user="root";
             String pass="Sudha@27102001";
             String url ="jdbc:mysql://localhost:3306/Student?useSSL=false";
-
+        
             con= DriverManager.getConnection(url,user,pass);
 
             

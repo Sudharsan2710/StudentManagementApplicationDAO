@@ -1,5 +1,6 @@
 package com.chainsys.test;
 import java.util.Scanner;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.chainsys.DAO.StudentDao;
@@ -8,7 +9,7 @@ import com.chainsys.DAO.StudentManagementValidation;
 import com.chainsys.model.Student;
 
 public class Client {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 
 		StudentDaoInterface dao = new StudentDao();
@@ -23,89 +24,94 @@ public class Client {
 		System.out.println(
 				"-----------------------> LOGIN PAGE <------------------------------------------------");
 		
-		int choice1;
-		System.out.println("1.ADMIN");
-		System.out.println("2.SIGN IN");
+//		int choice1;
+//		System.out.println("1.ADMIN");
+//		System.out.println("2.SIGN IN");
+//		
+//		
+//		while(true) {
+//			
+//			ArrayList<String> alist = new ArrayList<>();
+//			alist.add("Sudharsan27");
+//			alist.add("Rajaguru13");
+//			alist.add("Vasanth21");
+//			int i;
+//			String[] nms = new String[alist.size()];
+//			for ( i = 0 ; i< alist.size();i++) {
+//				nms[i]=alist.get(i);
+//			}
+//			 for (String k : nms) {
+//		            
+//			choice1 = sc.nextInt();
+//			
+//			if(choice1==1) {
+//		
+//		System.out.println("Enter the Username: ");
+//		String username= sc.next();
+//		do {
+//		if(!username.contains(k) ) {
+//			System.out.println("Enter the correct Username:");
+//			username= sc.next();
+//			}
+//		
+//		
+//		System.out.println("Enter the password");
+//		String password =sc.next();
+//		break;
+//			
+//		}while(true);
+//	
+//			}
+//			
+//		else {
+//			if(choice1==2) {
+//				
+//				System.out.println("WELCOME TO SIGN IN PAGE");
+//				
+//				
+//				System.out.println("Enter the New Username: ");
+//				String username1=sc.next();
+//				StudentManagementValidation.validusername1(username1);
+//				
+//				System.out.println("Enter the password: ");
+//				String password=sc.next();
+//				StudentManagementValidation.checkpassword(password);
+//				
+//				while (username1.matches(password)) {
+//					System.out.println("password should not be same as username");
+//					password=sc.next();
+//				}
+//				
+//				System.out.println("Enter the confirm Password: ");
+//				String confirmPassword=sc.next();
+//							
+//				do {
+//					
+//				
+//						if(password.contains(confirmPassword)) {
+//							System.out.println("LOGIN SUCCESSFULL");
+//							break;
+//						}
+//						else {
+//							
+//							System.out.println("PASSWORD MISMATCH PLEASE RE ENTER: ");
+//							 confirmPassword=sc.next();
+//						
+//						}
+//						
+//				}while(true);
+//						 
+//			}
+//					
+//		}
+//			 }
+	   
 		
-		
-		while(true) {
-			
-			ArrayList<String> alist = new ArrayList<>();
-			alist.add("Sudharsan27");
-			alist.add("Rajaguru13");
-			alist.add("Vasanth21");
-			int i;
-			String[] nms = new String[alist.size()];
-			for ( i = 0 ; i< alist.size();i++) {
-				nms[i]=alist.get(i);
-			}
-			 for (String k : nms) {
-		            
-			choice1 = sc.nextInt();
-			
-			if(choice1==1) {
-		
-		System.out.println("Enter the Username: ");
-		String username= sc.next();
-		do {
-		if(!username.contains(k) ) {
-			System.out.println("Enter the correct Username:");
-			username= sc.next();
-			}
-		
-		
-		System.out.println("Enter the password");
-		String password =sc.next();
-		break;
-			
-		}while(true);
-	
-			}
-			
-		else {
-			if(choice1==2) {
-				
-				System.out.println("WELCOME TO SIGN IN PAGE");
-				
-				
-				System.out.println("Enter the New Username: ");
-				String username1=sc.next();
-				StudentManagementValidation.validusername1(username1);
-				
-				System.out.println("Enter the password: ");
-				String password=sc.next();
-				StudentManagementValidation.checkpassword(password);
-				
-				while (username1.matches(password)) {
-					System.out.println("password should not be same as username");
-					password=sc.next();
-				}
-				
-				System.out.println("Enter the confirm Password: ");
-				String confirmPassword=sc.next();
-							
-				do {
-					
-				
-						if(password.contains(confirmPassword)) {
-							System.out.println("LOGIN SUCCESSFULL");
-							break;
-						}
-						else {
-							
-							System.out.println("PASSWORD MISMATCH PLEASE RE ENTER: ");
-							 confirmPassword=sc.next();
-						
-						}
-						
-				}while(true);
-						 
-			}
-					
-		}
-	    
 		
 		while (true) {
+								StudentDao obj = new StudentDao();
+								System.out.println(obj.adminDetails());
+								
 			System.out.println("\n1.Add Student " + "\n2.Show All Students " + "\n3.Get student based on roll number: "
 					+ "\n4.Delete Student " + "\n5.Update Student " + "\n6.Exit ");
 			System.out.println("Enter choice");
@@ -207,11 +213,11 @@ public class Client {
 			}
 			}
 		}
-	}
+//	}
 }
 		
 }
 		
-}
+
 	
 

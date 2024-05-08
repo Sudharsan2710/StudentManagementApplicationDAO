@@ -19,6 +19,7 @@ public class Client {
 		double percentage;
 		String collegeName;
 		
+		
 		System.out.println(
 				"-----------------------> LOGIN PAGE <------------------------------------------------");
 		

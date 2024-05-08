@@ -21,7 +21,6 @@ public   class StudentDao implements StudentDaoInterface {
 			String query = "insert into Student_details (name,collegeName,department,percentage) values(?,?,?,?)";
 			PreparedStatement pst = con.prepareStatement(query);
 
-		
 			pst.setString(1, s.getName());
 			pst.setString(2, s.getcollegeName());
 			pst.setString(3, s.getdepartment());

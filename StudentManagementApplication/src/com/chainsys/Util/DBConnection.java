@@ -19,6 +19,7 @@ public class DBConnection {
 
             con= DriverManager.getConnection(url,user,pass);
 
+            
         }
         catch(Exception ex){
             ex.printStackTrace();

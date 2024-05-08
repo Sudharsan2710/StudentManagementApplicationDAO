@@ -22,7 +22,6 @@ public class StudentManagementValidation {
 				
 			}
 			
-			
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

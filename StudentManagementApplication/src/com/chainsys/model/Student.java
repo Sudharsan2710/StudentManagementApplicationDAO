@@ -12,6 +12,7 @@ public class Student {
     }
     public Student( String name, String collegeName, String department, double percentage) {
         
+    	
         this.name = name;
         this.collegeName = collegeName;
         this.department = department;

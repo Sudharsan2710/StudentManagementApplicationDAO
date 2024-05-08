@@ -169,7 +169,7 @@ public   class StudentDao implements StudentDaoInterface {
 		         String[] nms = new String[alist.size()];
 		         for (int i = 0; i < alist.size(); i++) {
 		             nms[i] = alist.get(i);
-		         }
+		         
 		         System.out.println("1. Existing Admin");
 	             System.out.println("2. New Admin");
 		         for (String k: nms) {
@@ -236,16 +236,17 @@ public   class StudentDao implements StudentDaoInterface {
 		        
 		        
 		     
-		     } catch(Exception e){
+		     } 
+		    	 }catch(Exception e){
 		    	 e.printStackTrace();
 		    	 
 		     }
-		     
+		    	  
 	}
 		     
-		     
+		     }     
 	}
 				
-}
+
 
 

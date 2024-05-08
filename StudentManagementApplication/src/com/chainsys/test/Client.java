@@ -103,8 +103,6 @@ public class Client {
 			}
 					
 		}
-		
-
 	    
 		
 		while (true) {

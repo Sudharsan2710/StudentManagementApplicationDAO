@@ -6,13 +6,13 @@ public class StudentManagementValidation {
 
 		public static String checkusername(String Username) {
 			 
-			try {
+			
 			while (true) {
 			
 				String userName = Username;
 
 				 if (userName.matches("[a-zA-Z]+")) {
-					break;
+					 return Username;
 				} else 
 				{
 					System.out.println("Please enter a valid name with only characters.");
@@ -22,20 +22,17 @@ public class StudentManagementValidation {
 				
 			}
 			
-		}catch(Exception ex) {
-			ex.printStackTrace();
 		}
-			return Username;
-		}
+		
 		
 
 		public static String checkname(String Name) {
-			try {
+			
 			while (true) {
 				
 				String Name1 = Name;
 				if (Name1.matches("[a-zA-Z]+")) {
-					break;
+					return Name;
 				} else {
 					System.out.println("Please enter a valid name with only characters.");
 					Name = sc.next();
@@ -43,36 +40,34 @@ public class StudentManagementValidation {
 			}
 			
 		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		return Name;
-}
+		
+		
+		
+
 
 		public static String checkpassword(String Password) {
-			try { 
+			 
 			while (true) {
 		 
 		           if(Password.matches("^[A-Z][a-z]{4,}[0-9]{2,}[!@#$%^&*]")) {
-		        	   break;
+		        		return Password;
 		           }
 		           System.out.println("Please enter a password Starting with one UpperCase characters, OneLowerCase, uppercase, a number, and a special character:");
 		           Password = sc.next();
 		            
 		       }
 			 
-		   }catch(Exception ex) {
-			   ex.printStackTrace();
 		   }
-			return Password;
-		}
+		   
+		
+		
 		
 		public static int validid(int id) {
-			try {
+			
 				while(true) {
 					
 					if(id>3000&&id<=4000) {
-						break;
+						return id;
 					
 					}
 					else {
@@ -80,14 +75,13 @@ public class StudentManagementValidation {
 						id = sc.nextInt();
 						}
 				}
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-			return id;
 		}
 		
+			
+		
+		
 		public static double validpercencentage(double percentage) {
-			try {
+			
 			while(true) {
 				if(percentage>0 && percentage<=100) {
 					return percentage;
@@ -98,11 +92,10 @@ public class StudentManagementValidation {
 				}
 			}
 			
-		}catch(Exception ex) {
-			ex.printStackTrace();
 		}
-			return percentage;
-		}
+		
+		
+		
 		public static String validdepartment(String department) {
 				
 			while(true) {

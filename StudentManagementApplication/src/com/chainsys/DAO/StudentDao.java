@@ -1,19 +1,16 @@
 package com.chainsys.DAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Date;
 
 import com.chainsys.Util.DBConnection;
 import com.chainsys.model.Student;
 
-public   class StudentDao implements StudentDaoInterface {
+public class StudentDao implements StudentDaoInterface {
 	Connection con;
-	
 
 	@Override
 
@@ -21,7 +18,7 @@ public   class StudentDao implements StudentDaoInterface {
 		boolean flag = false;
 		try {
 			Connection con = DBConnection.createConnection();
-			String query = "insert into Student_details (name,collegeName,department,percentage) values(?,?,?,?)";
+			String query = "insert into student (name,collegeName,department,percentage) values(?,?,?,?)";
 			PreparedStatement pst = con.prepareStatement(query);
 
 			pst.setString(1, s.getName());
@@ -29,86 +26,82 @@ public   class StudentDao implements StudentDaoInterface {
 			pst.setString(3, s.getdepartment());
 			pst.setDouble(4, s.getPercentage());
 			pst.executeUpdate();
-			flag=true;
-			
+			flag = true;
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		return flag;
-		
 
 	}
 
 	@Override
-	public boolean  delete(int roll) {
-		
-		boolean flag=false;
+	public boolean delete(int roll) {
+
+		boolean flag = false;
 		try {
-		
-			
+
 			Connection con = DBConnection.createConnection();
-			String query = "delete from Student_details where rollnum=" + roll;
+			String query = "delete from student where rollnum=" + roll;
 			PreparedStatement pst = con.prepareStatement(query);
-			
+
 			pst.executeUpdate();
 			flag = true;
-		}
-		 catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			return flag;
+		return flag;
 	}
-	
-	
+
 	@Override
 	public boolean updateStudent(int ch, int rollNum, String name, String department, double percentage) {
-	    int choice = ch;
-	    boolean flag = false;
-	    try {
-	   
-	        con = DBConnection.createConnection();
-	        if (choice == 1) {
-	            String query = "update Student_details set name=? where rollnum=?";
-	            PreparedStatement ps = con.prepareStatement(query);
-	            ps.setString(1, name);
-	            ps.setInt(2, rollNum);
-	            ps.executeUpdate();
-	            flag = true;
-	            System.out.println("Updated Name Succesfully");
-	        } else if (choice == 2) {
-	            String query = "update Student_details set department=? where rollnum=?";
-	            PreparedStatement ps = con.prepareStatement(query);
-	            ps.setString(1, department);
-	            ps.setInt(2, rollNum);
-	            ps.executeUpdate();
-	            flag = true;
-	            System.out.println("Updated Department Succesfully");
-	        } else if (choice == 3) {
-	            String query = "update Student_details set percentage=? where rollnum=?";
-	            PreparedStatement ps = con.prepareStatement(query);
-	            ps.setDouble(1, percentage);
-	            ps.setInt(2, rollNum);
-	            ps.executeUpdate();
-	            flag = true;
-	            System.out.println("Updated Percentage Succesfully");
-	        }
-	    } catch (Exception ex) {	
-	        ex.printStackTrace();
-	    } finally {
-	        try {
-	            con.close(); // Close the connection
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    return flag;
+		int choice = ch;
+		boolean flag = false;
+		try {
+
+			con = DBConnection.createConnection();
+			if (choice == 1) {
+				String query = "update student set name=? where rollnum=?";
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, name);
+				ps.setInt(2, rollNum);
+				ps.executeUpdate();
+				flag = true;
+				System.out.println("Updated Name Succesfully");
+			} else if (choice == 2) {
+				String query = "update student set department=? where rollnum=?";
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, department);
+				ps.setInt(2, rollNum);
+				ps.executeUpdate();
+				flag = true;
+				System.out.println("Updated Department Succesfully");
+			} else if (choice == 3) {
+				String query = "update student set percentage=? where rollnum=?";
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setDouble(1, percentage);
+				ps.setInt(2, rollNum);
+				ps.executeUpdate();
+				flag = true;
+				System.out.println("Updated Percentage Succesfully");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return flag;
 	}
 
 	@Override
 	public void showAllStudent() {
 		try {
 			Connection con = DBConnection.createConnection();
-			String query = "select * from Student_details";
+			String query = "select * from student";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
@@ -131,7 +124,7 @@ public   class StudentDao implements StudentDaoInterface {
 		try {
 
 			Connection con = DBConnection.createConnection();
-			String query = "select * from Student_details where rollnum=" + roll;
+			String query = "select * from student where rollnum=" + roll;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
@@ -150,103 +143,45 @@ public   class StudentDao implements StudentDaoInterface {
 		return flag;
 	}
 
-	public boolean  adminDetails() {
-		boolean flag=false;
+	@Override
+	public boolean admindetails(String username, String password, String date_time) {
+
+		Connection con = null;
+		boolean isAdminLoggedIn = false;
 		
-			Scanner sc = new Scanner(System.in);
-		
-		     Connection con = DBConnection.createConnection();
+		try {
+			
+			con = DBConnection.createConnection();
 
-		     
-		     while(true) {
-		    	 
-		    	 try {
-		         ArrayList<String> alist = new ArrayList<>();
-		         alist.add("Sudharsan27");
-		         alist.add("Rajaguru13");
-		         alist.add("Vasanth21");
+			String query = "INSERT INTO admin (username,password,date_time) VALUES (?,?,?)";
 
-		         String[] nms = new String[alist.size()];
-		         for (int i = 0; i < alist.size(); i++) {
-		             nms[i] = alist.get(i);
-		         
-		         System.out.println("1. Existing Admin");
-	             System.out.println("2. New Admin");
-		         for (String k: nms) {
-		            
-		             int choice1 = sc.nextInt();
+			PreparedStatement pst = con.prepareStatement(query);
 
-		             if (choice1 == 1) {
-		                 System.out.println("Enter the Username: ");
-		                 String username = sc.next();
-		                 while(true) {
-		                     if (!username.contains(k)) {
-		                         System.out.println("Enter the correct Username:");
-		                         username = sc.next();
-		                    
-		                     } 
-		                 System.out.println("Enter the password");
-		                 String password1 = sc.next();
+			pst.setString(1, username);
+			pst.setString(2, password);
+			pst.setString(3, date_time);
+			
 
-		                 
-		                 String query = "insert into admindetails(username,password ) values(?,?)";
-		                 PreparedStatement pst = con.prepareStatement(query);
-		                 pst.setString(1, username);
-		                 pst.setString(2, password1);
-		                 int row = pst.executeUpdate();
-		                 System.out.println("Rows affected: " + row);
-		             } 
-		             }else if (choice1 == 2) {
-		                 System.out.println("WELCOME TO SIGN IN PAGE");
+			int rowsAffected = pst.executeUpdate();
 
-		                 System.out.println("Enter the New Username: ");
-		                 String username1 = sc.next();
+			if (rowsAffected > 0) {
 
-		                 System.out.println("Enter the password: ");
-		                 String password1 = sc.next();
+				isAdminLoggedIn = true;
+				System.out.println("Inserted Successfully");
+			}
 
-		                 while (password1.matches(username1)) {
-		                     System.out.println("Password should not be same as username");
-		                     password1 = sc.next();
-		                 }
-
-		                 System.out.println("Enter the confirm Password: ");
-		                 String confirmPassword = sc.next();
-
-		                 do {
-		                     if (password1.equals(confirmPassword)) {
-		                         System.out.println("LOGIN SUCCESSFULL");
-		                         
-		                         String query = "insert into admindetails(username,password ) values(?,?)";
-		                         PreparedStatement pst = con.prepareStatement(query);
-		                         pst.setString(1, username1);
-		                         pst.setString(2, password1);
-		                         int row = pst.executeUpdate();
-		                         System.out.println("Rows affected: " + row);
-		                         break;
-		                     } else {
-		                         System.out.println("PASSWORD MISMATCH PLEASE RE ENTER: ");
-		                         confirmPassword = sc.next();
-		                     }
-		                 } while (true);
-		             }
-		         }
-		         	con.close();
-					return false;
-		        
-		        
-		     
-		     } 
-		    	 }catch(Exception e){
-		    	 e.printStackTrace();
-		    	 
-		     }
-		    	  
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return isAdminLoggedIn;
 	}
-		     
-		     }     
-	}
-				
 
-
-
+}

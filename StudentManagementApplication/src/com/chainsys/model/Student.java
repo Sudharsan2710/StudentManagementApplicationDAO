@@ -1,13 +1,30 @@
 package com.chainsys.model;
+
+import java.util.Date;
+
 public class Student {
     private int rollNum;
     private String name;
     private String collegeName;
     private String department;
     private double percentage;
-    
+    private String username;
+    private String password;
+    private String date_time;
 
-    public Student(){
+    public String getDate_time() {
+		return date_time;
+	}
+	public void setDate_time(String date_time) {
+		this.date_time = date_time;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Student(){
 
     }
     public Student( String name, String collegeName, String department, double percentage) {
@@ -67,6 +84,14 @@ public class Student {
     public void setPercentage(double percentage) {
         this.percentage = percentage;
     }
+    
+    public String getUsername() {
+    	return  username;
+    }
+    
+    public void setUsername(String username) {
+    		this. username=username;
+    }
 
     @Override
     public String toString() {
@@ -76,8 +101,11 @@ public class Student {
                 ", collegeName='" + collegeName + '\'' +
                 ", department='" + department + '\'' +
                 ", percentage=" + percentage +
+                 "username='" + username + '\'' +
                 '}';
+               
     }
+  
 
 	
 	}

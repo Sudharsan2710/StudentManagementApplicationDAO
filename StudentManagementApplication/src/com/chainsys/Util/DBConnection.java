@@ -7,7 +7,7 @@ public class DBConnection {
     static Connection con; 
 
     public static Connection createConnection(){
-    	
+
 
         try{
         	//load driver 
@@ -15,7 +15,7 @@ public class DBConnection {
             //get connection
             String user="root";
             String pass="Sudha@27102001";
-            String url ="jdbc:mysql://localhost:3306/Student?useSSL=false";
+            String url ="jdbc:mysql://localhost:3306/adminstudent";
         
             con= DriverManager.getConnection(url,user,pass);
 
